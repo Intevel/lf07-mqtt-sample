@@ -30,7 +30,7 @@ const error = ref<string | undefined>(undefined);
 const url = "mqtt://172.20.199.158:9911";
 const topic = "test";
 
-const client = mqtt.connect("wss://172.20.199.158:9911");
+const client = mqtt.connect("mqtt://172.20.199.158:9911", { protocol: "wss"});
 
 client.on("connect", function (err1) {
   console.log("Verbunden mit MQTT-Broker");
