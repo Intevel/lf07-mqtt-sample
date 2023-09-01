@@ -3,7 +3,7 @@
     <img src="/frame.png" alt="QR-Code" class="w-16 h-16"/>
   </div>
   <div
-    class="flex justify-center h-screen items-center text-center flex-row md:flex-col"
+    class="flex justify-center h-screen items-center text-center flex-row"
   >
     <h1 class="font-extrabold text-2xl md:text-4xl mb-2">
       Lernfeld 07 - MQTT Beispiel
