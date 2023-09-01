@@ -10,7 +10,7 @@
     </h1>
     <p class="text-gray-800">Verbindet euch über den QR-Code</p>
     <div class="mt-8" v-if="temperature">
-      <h2>Aktuelle Temperatur: {{ temperature }}</h2>
+      <h2>Aktuelle Temperatur: <span class="text-blue-600 font-bold">{{ temperature }}</span></h2>
     </div>
     <div class="mt-8" v-else>
       <h2>Warte auf Nachrichten...</h2>
@@ -54,6 +54,7 @@ client.on("connect", function (err1) {
 client.on("message", function (topic, message) {
   if (topic === "test") {
     temperature.value = message.toString();
+    error.value = undefined;
     console.log(`Neue Nachricht im Topic ${topic}: ${message.toString()}`);
   }
 });
