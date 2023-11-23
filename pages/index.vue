@@ -7,17 +7,19 @@
       Lernfeld 07 - MQTT Beispiel
     </h1>
     <p class="text-gray-800">Verbindet euch über den QR-Code</p>
-    <div class="mt-8" v-if="temperatureOne">
-      <h2>
-        Aktuelle Temperatur 1:
-        <span class="text-blue-600 font-bold">{{ temperatureOne }} </span>
-      </h2>
-    </div>
-    <div class="mt-4" v-if="temperatureTwo">
-      <h2>
-        Aktuelle Temperatur 2:
-        <span class="text-blue-600 font-bold">{{ temperatureTwo }} </span>
-      </h2>
+    <div v-if="temperatureOne || temperatureTwo">
+      <div class="mt-8" v-if="temperatureOne">
+        <h2>
+          Aktuelle Temperatur 1:
+          <span class="text-blue-600 font-bold">{{ temperatureOne }} </span>
+        </h2>
+      </div>
+      <div class="mt-4" v-if="temperatureTwo">
+        <h2>
+          Aktuelle Temperatur 2:
+          <span class="text-blue-600 font-bold">{{ temperatureTwo }} </span>
+        </h2>
+      </div>
     </div>
     <div class="mt-8" v-else>
       <h2>Warte auf Nachrichten...</h2>
@@ -44,7 +46,8 @@ const client = mqtt.connect("mqtt://172.20.199.158:9911", { protocol: "ws" });
 client.on("connect", function (err1) {
   console.log("Verbunden mit MQTT-Broker");
   if (err1) {
-    error.value = `Fehler beim Verbinden mit dem MQTT-Broker: ${err1}`;
+    console.log(JSON.stringify(err1));
+    // error.value = `Fehler beim Verbinden mit dem MQTT-Broker`;
     console.error(`Fehler beim Verbinden mit dem MQTT-Broker: ${err1}`);
   }
 
